@@ -1,7 +1,7 @@
 package service;
 
 import domain.User;
-import domain.UserMapper;
+import repository.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,7 @@
 package controller;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,10 @@ public class UserController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String root() throws JsonProcessingException{
         System.out.println("루트");
-        System.out.println(new ObjectMapper().writeValueAsString(userService.getUserList()));
+        ObjectMapper jsonMapper = new ObjectMapper();
+        jsonMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
+        System.out.println(jsonMapper.writeValueAsString(userService.getUserList()));
+        //System.out.println(new ObjectMapper().writeValueAsString(userService.getUserList()));
 
         return "home";
     }

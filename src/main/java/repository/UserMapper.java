@@ -1,5 +1,6 @@
-package domain;
+package repository;
 
+import domain.User;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
